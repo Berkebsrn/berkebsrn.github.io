@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Site Örneği</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #message {
+      font-size: 28px;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+
+    #buttons {
+      display: flex;
+      gap: 40px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      font-size: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    #wiii {
+      display: none;
+      font-size: 50px;
+      font-weight: bold;
+      color: #ffeb3b;
+      position: absolute;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="message">Benimle Sevgili Olur Musun?</div>
+
+  <div id="buttons">
+    <button id="yesButton">Evet</button>
+    <button id="noButton">Hayır</button>
+  </div>
+
+  <div id="wiii">Wiii!</div>
+
+  <script>
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const message = document.getElementById('message');
+    const wiii = document.getElementById('wiii');
+
+    // Evet butonuna basınca Wiii yazısını göster
+    yesButton.addEventListener('click', () => {
+      wiii.style.display = 'block';
+      wiii.style.left = '50%';
+      wiii.style.top = '50%';
+      wiii.style.transform = 'translate(-50%, -50%)';
+      message.textContent = "Wiii!";
+    });
+
+    // Hayır butonuna basınca butonun yerini değiştirme
+    noButton.addEventListener('click', () => {
+      const randomX = Math.floor(Math.random() * (window.innerWidth - 200)); // Ekranın içinde kalacak şekilde
+      const randomY = Math.floor(Math.random() * (window.innerHeight - 100)); // Ekranın içinde kalacak şekilde
+
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+
+      // Wiii yazısını gizle
+      wiii.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
