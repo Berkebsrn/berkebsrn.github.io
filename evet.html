@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siteye Giriş Sayacı</title>
+</head>
+<body>
+    <h1>Siteye Hoşgeldiniz!</h1>
+    <p>Bu sayfayı her ziyaret ettiğinizde, giriş sayısını F12'ye basarak görebilirsiniz.</p>
+
+    <script>
+        // Sayfa yüklendiğinde localStorage'dan ziyaret sayısını al
+        let visitCount = localStorage.getItem("visitCount");
+
+        // Eğer daha önce bir giriş yapılmamışsa, sayacı başlat
+        if (visitCount === null) {
+            visitCount = 0;
+        }
+
+        // Giriş sayısını bir arttır
+        visitCount++;
+
+        // Yeni sayıyı localStorage'a kaydet
+        localStorage.setItem("visitCount", visitCount);
+
+        // Sayfada ziyaret sayısını göstermek
+        console.log("Bu siteye giriş sayınız: " + visitCount);
+
+        // Konsola bir komut girildiğinde sayacı sıfırlayacak işlev
+        console.clear = function() {
+            // Sayacı sıfırla ve localStorage'a sıfırlamayı kaydet
+            localStorage.setItem("visitCount", 0);
+            console.log("Ziyaret sayacı sıfırlandı.");
+        };
+
+        // localStorage değişikliklerini tüm sekmelerde dinlemek
+        window.addEventListener("storage", function(event) {
+            if (event.key === "visitCount") {
+                console.log("Ziyaret sayacı güncellendi: " + event.newValue);
+            }
+        });
+    </script>
+</body>
+</html>
