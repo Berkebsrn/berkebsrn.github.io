@@ -12,7 +12,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #1a1a1a, #8e1414); /* Koyu kırmızı ve siyah */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,12 +20,16 @@
       color: white;
       flex-direction: column;
       text-align: center;
+      position: relative;
+      overflow: hidden; /* Ekranın dışına taşmasını engelle */
     }
 
     #message {
-      font-size: 28px;
+      font-size: 32px;
+      font-weight: bold;
       margin-bottom: 40px;
       letter-spacing: 2px;
+      text-transform: uppercase;
       transition: all 0.3s ease;
     }
 
@@ -35,20 +39,22 @@
     }
 
     button {
-      background-color: #4caf50;
+      background-color: #ff4040; /* Koyu kırmızı */
       color: white;
       font-size: 20px;
-      padding: 15px 30px;
+      padding: 18px 36px;
       border: none;
-      border-radius: 50px;
+      border-radius: 30px;
       cursor: pointer;
       outline: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: #ff2a2a; /* Hover efekti ile daha parlak kırmızı */
       transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     }
 
     button:active {
@@ -59,25 +65,25 @@
       outline: none;
     }
 
-    #wiii {
-      display: none;
-      font-size: 50px;
-      font-weight: bold;
-      color: #ffeb3b;
+    .heart {
       position: absolute;
-      animation: fadeIn 1s forwards;
+      font-size: 30px;
+      color: #ffeb3b; /* Sarı kalp rengi */
+      opacity: 0.8;
+      animation: fall 2s ease-in-out forwards; /* Animasyonu bir kez tamamla */
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0);
-      }
-      to {
+    @keyframes fall {
+      0% {
+        transform: translateY(-150px) scale(0.5); /* Ekranın dışından başlayacak */
         opacity: 1;
-        transform: scale(1);
+      }
+      100% {
+        transform: translateY(100vh) scale(1); /* Kalp ekranın alt kısmına kadar kayacak */
+        opacity: 0;
       }
     }
+
   </style>
 </head>
 <body>
@@ -89,21 +95,39 @@
     <button id="noButton">Hayır</button>
   </div>
 
-  <div id="wiii">Wiii!</div>
-
   <script>
     const yesButton = document.getElementById('yesButton');
     const noButton = document.getElementById('noButton');
     const message = document.getElementById('message');
-    const wiii = document.getElementById('wiii');
 
-    // Evet butonuna basınca Wiii yazısını göster
+    // Evet butonuna basınca kalplerin yağmasını sağla
     yesButton.addEventListener('click', () => {
-      wiii.style.display = 'block';
-      wiii.style.left = '50%';
-      wiii.style.top = '50%';
-      wiii.style.transform = 'translate(-50%, -50%)';
-      message.textContent = "Wiii!";
+      message.textContent = ""; // Mesajı temizle
+
+      // Kalp sayısını 20 ile 30 arasında rastgele belirle
+      const numberOfHearts = Math.floor(Math.random() * 11) + 200; // 20 ile 30 arasında
+
+      // Kalp yağmasını başlat
+      for (let i = 0; i < numberOfHearts; i++) { // Rastgele belirlenen sayıda kalp
+        const heart = document.createElement('div');
+        heart.textContent = '❤️'; // Kalp emojisi
+        heart.classList.add('heart');
+
+        // Her kalp için rastgele pozisyon oluştur
+        const randomX = Math.floor(Math.random() * window.innerWidth); // Yatay rastgele pozisyon
+        const randomY = Math.floor(Math.random() * -200); // Yükseklik -200 ile 0 arasında rastgele
+
+        heart.style.left = `${randomX}px`;
+        heart.style.top = `${randomY}px`; // Yüksekliği rastgele belirle
+
+        // Ekrana ekle
+        document.body.appendChild(heart);
+
+        // Kalbin animasyonunun bitişinde onu kaldır
+        setTimeout(() => {
+          heart.remove();
+        }, 5000); // Kalp 4 saniye içinde kaybolacak
+      }
     });
 
     // Hayır butonuna basınca butonun yerini değiştirme
@@ -114,9 +138,6 @@
       noButton.style.position = 'absolute';
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
-
-      // Wiii yazısını gizle
-      wiii.style.display = 'none';
     });
   </script>
 
