@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #1e1e1e;
+  color: white;
+}
+
+.app {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Eğik Fotoğraflar Alanı */
+.tilted-images {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 100px; /* Fotoğrafları daha da aşağıya yerleştiriyoruz */
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1; /* Müzik çaların üstünde olmasın */
+  gap: 3rem; /* Fotoğrafların arasındaki boşluğu artırdık */
+}
+
+.left {
+  transform: rotate(-20deg); /* Sol fotoğraf eğik */
+}
+
+.right-images {
+  display: flex;
+  gap: 3rem; /* Sağdaki fotoğraflar arasındaki boşluğu artırdık */
+  flex-direction: column; /* Sağdaki fotoğraflar dikey olacak */
+  justify-content: space-between;
+}
+
+.right-images img {
+  transform: rotate(20deg); /* Sağdaki fotoğraflar eğik */
+}
+
+.tilted-image {
+  width: 250px; /* Fotoğraf boyutunu büyüttük */
+  height: 250px; /* Fotoğraf boyutunu büyüttük */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 500px) {
+  .tilted-images {
+    flex-direction: column;
+  }
+
+  .right-images {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+/* Player alanı */
+.player {
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem 0;
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.player img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+#song-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#producer-name {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+/* Seek Çubuğu - Beyazdan griye geçiş */
+#seek {
+  width: 100%;
+  height: 6px;
+  margin: 1rem 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(64, 64, 64) 0%);
+  border-radius: 3px;
+}
+
+#seek::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+}
+
+#seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  margin-top: 0px; /* Merkezlemek için */
+  cursor: pointer;
+}
+
+/* Spotify tarzı kontrol butonları */
+.controls button {
+  background: #444;
+  border: none;
+  padding: 0.6rem 1rem;
+  margin: 0.3rem;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #666;
+}
+
+.controls button:active {
+  background: #555;
+}
+
+.song-list {
+  width: 100%;
+  max-width: 700px; /* Genişlik küçük tutuluyor */
+  margin: 1rem 0;
+  padding: 0.8rem; /* İç boşluk biraz azaltıldı */
+  background-color: #333;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: nowrap; /* Öğeler yatayda sıralanacak */
+  gap: 0.6rem; /* Fotoğrafların arasındaki boşluk daraltıldı */
+  justify-content: flex-start; /* Öğeler sola hizalanacak */
+  max-height: 250px; /* Yükseklik sınırlandırıldı */
+  overflow-x: auto; /* Yatay kaydırma çubuğu ekleniyor */
+  overflow-y: hidden; /* Dikey kaydırma çubuğu gizlendi */
+}
+
+
+.song-item {
+  flex: 1 1 120px;
+  max-width: 150px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0.5rem; /* Şarkı öğeleri arasındaki mesafeyi azaltıyoruz */
+}
+
+.song-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.song-item p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.song-item .producer {
+  font-size: 0.8rem; /* Yapımcı adının boyutunu biraz küçültüyoruz */
+  color: #aaa;
+}
+

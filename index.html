@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="player">
+      <img id="current-cover" src="images/cover1.jpg" alt="Cover">
+      <div id="song-name">Şarkı 1</div>
+      <div id="producer-name">XYZ Müzik</div>
+      <audio id="audio" preload="auto"></audio>
+      <div class="controls">
+        <button onclick="prevSong()">◀</button>
+        <button id="play-button" onclick="togglePlay()">▶</button>
+        <button onclick="nextSong()">▶▶</button>
+      </div>
+      <input id="seek" type="range" min="0" max="100" value="0" step="1">
+    </div>
+
+    <div class="tilted-images">
+      <div class="left">
+        <img src="images/cover1.jpg" alt="Song 1" class="tilted-image">
+      </div>
+
+      <div class="right-images">
+        <img src="images/cover2.jpg" alt="Song 2" class="tilted-image">
+        <img src="images/cover3.jpg" alt="Song 3" class="tilted-image">
+      </div>
+    </div>
+
+    <div class="song-list">
+      <div class="song-item" onclick="selectSong(0)">
+        <img src="images/cover1.jpg" alt="Aşk">
+        <p>Aşk, Virüs</p>
+        <p>Redd</p>
+      </div>
+      <div class="song-item" onclick="selectSong(1)">
+        <img src="images/cover2.jpg" alt="Çözüm Sendin">
+        <p>Çözüm Sendin</p>
+        <p>İnsan Mıyız</p>
+      </div>
+      <div class="song-item" onclick="selectSong(2)">
+        <img src="images/cover3.jpg" alt="Rüzgar">
+        <p>Rüzgar</p>
+        <p>Kalben</p>
+      </div>
+      <div class="song-item" onclick="selectSong(3)">
+        <img src="images/cover4.jpg" alt="Kumralım">
+        <p>Kumralım</p>
+        <p>Yaşar</p>
+      </div>
+      <div class="song-item" onclick="selectSong(4)">
+        <img src="images/cover5.jpg" alt="Ben">
+        <p>Ben</p>
+        <p>Barış Akarsu</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
