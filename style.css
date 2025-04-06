@@ -59,21 +59,11 @@ body {
 @media (max-width: 500px) {
   .tilted-images {
     flex-direction: column;
-    gap: 1rem; /* Fotoğraflar arasındaki boşluk daha küçük */
   }
 
   .right-images {
     flex-direction: row;
     justify-content: space-evenly;
-  }
-
-  .left, .right-images img {
-    transform: rotate(0deg); /* Mobilde fotoğrafların eğimini sıfırlıyoruz */
-  }
-
-  .tilted-image {
-    width: 180px; /* Fotoğrafları daha küçük yapıyoruz */
-    height: 180px; /* Fotoğrafları daha küçük yapıyoruz */
   }
 }
 
@@ -172,6 +162,7 @@ body {
   overflow-y: hidden; /* Dikey kaydırma çubuğu gizlendi */
 }
 
+  
 .song-item {
   flex: 1 1 120px;
   max-width: 150px;
@@ -198,57 +189,3 @@ body {
   color: #aaa;
 }
 
-@media (max-width: 500px) {
-  .tilted-images {
-    flex-direction: column;
-    gap: 1rem; /* Fotoğraflar arasındaki boşluk daha küçük */
-  }
-
-  .right-images {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-
-  .left, .right-images img {
-    transform: rotate(0deg); /* Mobilde fotoğrafların eğimini sıfırlıyoruz */
-  }
-
-  .tilted-image {
-    width: 180px; /* Fotoğrafları daha küçük yapıyoruz */
-    height: 180px; /* Fotoğrafları daha küçük yapıyoruz */
-  }
-
-  .player {
-    max-width: 100%; /* Genişliği tam ekran yapıyoruz */
-    padding: 0.8rem; /* Daha az iç boşluk */
-  }
-
-  .player img {
-    width: 100%; /* Resmin boyutunu ekranla uyumlu yapıyoruz */
-  }
-
-  #song-name {
-    font-size: 1.2rem; /* Şarkı adını küçültüyoruz */
-  }
-
-  #producer-name {
-    font-size: 0.9rem; /* Yapımcı adını da küçültüyoruz */
-  }
-
-  .controls button {
-    padding: 1rem 1.5rem; /* Butonları daha büyük yapıyoruz */
-    font-size: 1.8rem; /* Font boyutunu büyütüyoruz */
-  }
-
-  .song-list {
-    max-width: 100%; /* Tam genişlik */
-    padding: 0.6rem; /* İç boşluk biraz küçültüldü */
-    flex-wrap: wrap; /* Yatayda sığmayan öğeler alt satıra geçebilir */
-    gap: 0.4rem; /* Daha dar bir boşluk */
-  }
-
-  .song-item {
-    flex: 1 1 100px; /* Şarkı öğelerini daha küçük yapıyoruz */
-    max-width: 120px; /* Genişliği sınırlıyoruz */
-  }
-}
