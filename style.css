@@ -59,11 +59,28 @@ body {
 @media (max-width: 500px) {
   .tilted-images {
     flex-direction: column;
+    align-items: center; /* Fotoğrafların ortalanması sağlanabilir */
   }
 
   .right-images {
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column; /* Sağdaki fotoğraflar daha dikey olacak */
+    justify-content: flex-start;
+  }
+
+  .player {
+    max-width: 100%; /* Player alanı genişliği mobilde tam olacak */
+    padding: 1rem; /* İçerik biraz daha sıkışabilir */
+  }
+
+  .song-list {
+    max-width: 100%; /* Liste genişliği mobilde tam olacak */
+    padding: 0.6rem; /* Padding küçültüldü */
+  }
+
+  .tilted-image, .song-item img {
+    width: 100%; /* Genişlik %100 olacak şekilde ayarlandı */
+    max-width: 250px; /* Maksimum genişlik sınırlandı */
+    height: auto; /* Yükseklik oranını korur */
   }
 }
 
@@ -162,7 +179,6 @@ body {
   overflow-y: hidden; /* Dikey kaydırma çubuğu gizlendi */
 }
 
-
 .song-item {
   flex: 1 1 120px;
   max-width: 150px;
@@ -188,4 +204,3 @@ body {
   font-size: 0.8rem; /* Yapımcı adının boyutunu biraz küçültüyoruz */
   color: #aaa;
 }
-
